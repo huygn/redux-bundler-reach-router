@@ -1,0 +1,54 @@
+{
+  "name": "react-app-redux-bundler-reach",
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build",
+    "build:analyze": "poi build --bundle-report",
+    "serve": "serve dist -l 8000",
+    "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ext .js,.jsx --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@loadable/component": "^5.0.1",
+    "@reach/router": "^1.2.1",
+    "dlv": "^1.1.2",
+    "internal-nav-helper": "^1.1.0",
+    "money-clip": "^3.0.0",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-localize-redux": "^3.2.0",
+    "redux-bundler": "^22.2.0",
+    "redux-bundler-react": "^1.1.0"
+  },
+  "devDependencies": {
+    "@poi/plugin-bundle-report": "^10.0.1",
+    "@poi/plugin-eslint": "^10.0.2",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-poi": "^10.0.2",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.9.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "poi": "^10.2.10",
+    "postcss-flexbugs-fixes": "^3.3.0",
+    "postcss-safe-parser": "^4.0.1",
+    "purgecss-webpack-plugin": "^1.2.0",
+    "purgecss-whitelister": "^2.1.0",
+    "react-hot-loader": "^4.3.0",
+    "sass-loader": "^6.0.7",
+    "serve": "^10.0.2",
+    "tailwindcss": "^0.7.2",
+    "terser-webpack-plugin": "^1.1.0"
+  },
+  "resolutions": {
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
+  }
+}
