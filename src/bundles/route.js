@@ -30,10 +30,13 @@ export default {
     type: 'ROUTE_MATCH_UPDATED',
     payload: match,
   }),
-  doNavigate: (path, opt) => ({ dispatch }) => {
+  doNavigate: (path, opt) => () => {
     return navigate(path, opt);
   },
-  // make below actions noop
-  doUpdateUrl: path => () => {},
-  doReplaceUrl: path => () => {},
+  doUpdateUrl: path => () => {
+    return navigate(path);
+  },
+  doReplaceUrl: path => () => {
+    return navigate(path, { replace: true });
+  },
 };

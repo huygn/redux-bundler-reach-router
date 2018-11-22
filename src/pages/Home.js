@@ -23,7 +23,7 @@ class Home extends Component {
           <button
             type="button"
             className="inline-block bg-blue text-white rounded-sm px-3 py-2"
-            onClick={() => this.props.doNavigate('/about')}
+            onClick={() => this.props.doUpdateUrl('/about?src=btn_click')}
           >
             About
           </button>
@@ -34,6 +34,6 @@ class Home extends Component {
 }
 
 export default connect(
-  'doNavigate',
+  'doUpdateUrl',
   Home,
 );

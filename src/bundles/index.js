@@ -1,6 +1,10 @@
 import {
-  composeBundles,
-  createUrlBundle,
+  composeBundlesRaw,
+  appTimeBundle,
+  asyncCountBundle,
+  onlineBundle,
+  debugBundle,
+  createReactorBundle,
   createCacheBundle,
 } from 'redux-bundler';
 
@@ -10,11 +14,17 @@ import route from './route';
 import url from './url';
 import localize from './localize';
 
-export default composeBundles(
-  createUrlBundle({ inert: true, handleScrollRestoration: false }),
-  url,
-  route,
+export default composeBundlesRaw(
+  // utility bundles
+  appTimeBundle,
+  asyncCountBundle,
+  onlineBundle,
+  debugBundle,
+  createReactorBundle(),
+  // user-implemented bundles
   createCacheBundle(cache.set),
   extraArgs,
+  url,
+  route,
   localize,
 );

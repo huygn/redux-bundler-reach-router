@@ -16,16 +16,6 @@ const makeSerializable = url => {
   return result;
 };
 
-const IPRE = /^[0-9.]+$/;
-export const parseSubdomains = (hostname, getBareHost) => {
-  if (IPRE.test(hostname)) return [];
-  const parts = hostname.split('.');
-  if (getBareHost) {
-    return parts.slice(-2).join('.');
-  }
-  return hostname.split('.').slice(0, -2);
-};
-
 export const removeLeading = (char, string) =>
   string.charAt(0) === char ? string.slice(1) : string;
 
@@ -38,7 +28,7 @@ export default {
   selectQueryObject: createSelector('selectUrlObject', urlObj =>
     qs.parse(urlObj.search),
   ),
-  selectQueryString: createSelector('selectUrlObject', queryObj =>
+  selectQueryString: createSelector('selectQueryObject', queryObj =>
     qs.stringify(queryObj),
   ),
   selectHash: createSelector('selectUrlObject', urlObj =>
@@ -46,7 +36,4 @@ export default {
   ),
   selectHashObject: createSelector('selectHash', hash => qs.parse(hash)),
   selectHostname: createSelector('selectUrlObject', urlObj => urlObj.hostname),
-  selectSubdomains: createSelector('selectHostname', hostname =>
-    parseSubdomains(hostname),
-  ),
 };
