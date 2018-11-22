@@ -185,7 +185,7 @@ class RouterImpl extends React.PureComponent {
 
     let match = pick(routes, pathname);
     // callback
-    setTimeout(() => onMatch({ location, match }), 0);
+    onMatch({ location, match });
 
     if (match) {
       let {
