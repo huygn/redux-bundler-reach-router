@@ -1,3 +1,4 @@
+import { createSelector } from 'redux-bundler';
 import dlv from 'dlv';
 import { navigate } from '@/lib/reach-router';
 
@@ -16,16 +17,23 @@ export default {
     };
   },
   selectMatch: state => state.route.match,
-  selectRouteParams: state => dlv(state, 'route.match.params', {}),
-  selectRouteIsDefault: state => dlv(state, 'route.match.route.default'),
+  selectPathname: createSelector('selectMatch', match =>
+    dlv(match, 'uri', window.location.pathname),
+  ),
+  selectRouteParams: createSelector('selectMatch', match =>
+    dlv(match, 'params', {}),
+  ),
+  selectRouteIsDefault: createSelector('selectMatch', match =>
+    dlv(match, 'route.default'),
+  ),
   doUpdateRoute: ({ location, match }) => ({
     type: 'ROUTE_MATCH_UPDATED',
     payload: match,
   }),
-  doNavigate: (path, opt = {}) => ({ store }) => {
-    return navigate(path, opt).then(() => {
-      opt.replace ? store.doReplaceUrl(path) : store.doUpdateUrl(path);
-    });
+  doNavigate: (path, opt) => ({ dispatch }) => {
+    return navigate(path, opt);
   },
-  // still needs to prevent calls to `doUpdateUrl` and `doReplaceUrl`
+  // make below actions noop
+  doUpdateUrl: path => () => {},
+  doReplaceUrl: path => () => {},
 };

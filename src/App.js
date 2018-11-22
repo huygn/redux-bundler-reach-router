@@ -21,7 +21,7 @@ const App = () => {
                   to={item.url}
                   className="no-underline inline-block mr-1 p-2 text-blue hover:text-blue-darker "
                   activeClassName="bg-blue-lighter"
-                  partial={false}
+                  exact
                 >
                   {item.label}
                 </Link>
